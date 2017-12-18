@@ -28,37 +28,40 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
-  props: ['themas', 'fiches'],
+  props: ['themas', 'fiches', 'currentFilter'],
   data () {
     return {
       search: '',
-      isThemaSearch: false
+      isThemaSearch: false,
+      current: ''
     }
   },
   methods: {
     ...mapActions([
       'setActiveFilter'
     ]),
-    ...mapGetters([
-      'getActiveFilter'
-    ]),
     handleSubcatClick (event) {
       console.log(event.target.outerText)
       this.isThemaSearch = false
       this.setActiveFilter(event.target.outerText)
       this.search = event.target.outerText
+      this.currentFilter = ''
     },
     handleKernthemaClick (event) {
       this.isThemaSearch = true
       this.setActiveFilter(event.target.outerText)
       this.search = event.target.outerText
+      this.currentFilter = ''
     }
   },
   computed: {
     filteredFiches () {
       let ficheArray = this.fiches
+      if (this.currentFilter !== '') {
+        this.search = this.currentFilter
+      }
       return ficheArray.filter((fiche) => {
         return !this.isThemaSearch ? fiche.Subcategorie.find((cat) => {
           return cat.display === this.search

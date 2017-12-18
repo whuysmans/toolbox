@@ -6,7 +6,7 @@
         <div v-html="homeInfo.Beschrijving"></div>
       </div>
       <div>
-        <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
+        <toolbox-filter :themas="themas" :fiches="fiches" :currentFilter="currentFilter"></toolbox-filter>
       </div>
     </div>
   </section>
@@ -18,12 +18,25 @@ export default {
   components: {
     'toolbox-filter': Filter
   },
+  data () {
+    return {
+      currentFilter: ''
+    }
+  },
   asyncData ({store, params}) {
     return {
       themas: store.getters.getKernThemas,
       homeInfo: store.getters.getHomeInfo[0],
-      fiches: store.getters.getInfoFiches
+      fiches: store.getters.getInfoFiches,
+      activeFilter: store.getters.getActiveFilter
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      if (vm.activeFilter && vm.activeFilter !== '') {
+        vm.currentFilter = vm.activeFilter
+      }
+    })
   }
 }
 </script>

@@ -67,7 +67,6 @@
     </div>
     <tags :fiche="fiche"></tags>
     <pagination :slug="fiche.Slug"></pagination>
-    <tags></tags>
   </section>
 </template>
 <script>
@@ -82,12 +81,6 @@ export default {
     return {
       title: '3-2-1',
       fiche: store.getters.getInfoFiche('3-2-1')[0]
-    }
-  },
-  filters: {
-    fixPath (str) {
-      const pattern = /([^/]+\.(bmp|jpg|svg))$/
-      return str.match(pattern)[1]
     }
   }
 }
