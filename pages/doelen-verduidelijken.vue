@@ -1,36 +1,76 @@
 <template>
-  <section class="container">
+  <section class="container content">
     <div class="main">
-      <h2 class="subtitle">
+      <h2 class="title">
       {{ fiche.Titel }}
       </h2>
-      <div class="beschrijving">
-        <h3>Beschrijving</h3>
-        <div v-html="fiche.Beschrijving"></div>
-        <img width="50px" height="50px" :src="fiche.BeschrijvingIcoon.path | fixPath" />
+      <div class="beschrijving box box-shadow box-padding">
+        <article class="media">
+          <div class="media-left">
+            <span class="icon">
+              <i class="fa fa-3x" :class="fiche.BeschrijvingIcoon"></i>
+            </span>
+          </div>
+          <div class="media-content">
+            <p>
+              <h3 class="subtitle">Beschrijving</h3>
+              <div v-html="fiche.Beschrijving"></div>
+            </p>
+          </div>
+        </article>
       </div>
-       <div class="werking">
-        <h3>Werking</h3>
-        <div v-html="fiche.Werking"></div>
-        <img width="50px" height="50px" :src="fiche.WerkingIcoon.path | fixPath" />
+      <div class="werking box box-shadow box-padding">
+        <article class="media">
+          <div class="media-left">
+            <span class="icon">
+              <i class="fa fa-3x" :class="fiche.WerkingIcoon"></i>
+            </span>
+          </div>
+          <div class="media-content">
+            <p>
+              <h3 class="subtitle">Werking</h3>
+              <div v-html="fiche.Werking"></div>
+            </p>
+          </div>
+        </article>
       </div>
-       <div class="tips">
-        <h3>Tips</h3>
-        <div v-html="fiche.Tips"></div>
-        <img width="50px" height="50px" :src="fiche.TipsIcoon.path | fixPath" />
+      <div class="tips box box-shadow box-padding">
+        <article class="media">
+          <div class="media-left">
+            <span class="icon">
+              <i class="fa fa-3x" :class="fiche.TipsIcoon"></i>
+            </span>
+          </div>
+          <div class="media-content">
+            <p>
+              <h3 class="subtitle">Tips</h3>
+              <div v-html="fiche.Tips"></div>
+            </p>
+          </div>
+        </article>
       </div>
-       <div class="voorbeelden">
-        <h3>Voorbeelden</h3>
-        <div v-html="fiche.Voorbeelden"></div>
-        <img width="50px" height="50px" :src="fiche.VoorbeeldenIcoon.path | fixPath" />
+      <div class="voorbeelden box box-shadow box-padding">
+        <article class="media">
+          <div class="media-left">
+            <span class="icon">
+              <i class="fa fa-3x" :class="fiche.VoorbeeldenIcoon"></i>
+            </span>
+          </div>
+          <div class="media-content">
+            <p>
+              <h3 class="subtitle">Voorbeelden</h3>
+              <div v-html="fiche.Voorbeelden"></div>
+            </p>
+          </div>
+        </article>
       </div>
     </div>
     <div class="tags">
-      <div class="kern-thema">
-        <a href="">{{ fiche.Kernthemas.display }}</a>
+      <div class="kern-thema button">
+        {{ fiche.Kernthemas.display }}
       </div>
       <div class="sub-cat">
-        <a v-for="cat in fiche.Subcategorie" href="" :key="cat._id">{{ cat.display }}</a>
+        <a v-for="cat in fiche.Subcategorie" href="" :key="cat._id" class="button">{{ cat.display }}</a>
       </div>
     </div>
   </section>

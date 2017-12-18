@@ -1,7 +1,7 @@
 <template>
-  <div class="button-green" href="">
+  <a class="button" href="">
     {{ titel }}
-  </div>
+  </a>
 </template>
 <script>
   export default {

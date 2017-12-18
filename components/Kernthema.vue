@@ -1,12 +1,26 @@
 <template>
-  <a class="button--grey" @click="handleClick">
-    <h2 class="subtitle">{{ titel }}</h2>
-    <img :src="icoon | fixPath" width="50px" height="50px"/>
-    <div class="element-body" v-if="isExpanded">
-      <div v-html="info"></div>
-      <sub-cat v-for="subcat in subcats" :subcategorie="subcat" :key="subcat._id"></sub-cat>
-    </div>
-  </a>
+  <div class="beschrijving box box-shadow box-padding" @click="handleClick">
+    <article class="media">
+      <div class="media-left">
+        <span class="icon">
+          <i class="fa fa-3x" :class="icoon"></i>
+        </span>
+      </div>
+      <div class="media-content">
+        <p>
+          <h2 class="subtitle">{{ titel }}</h2>
+          <div v-html="info"></div>
+          <div v-if="isExpanded">
+            <sub-cat v-for="(subcat, index) in subcats" 
+            :subcategorie="subcat" 
+            :key="subcat._id"
+            :class="index %2 === 0 ? 'is-dark' : 'is-light'"
+            ></sub-cat>
+          </div>
+        </p>
+      </div>
+    </article>
+  </div>
 </template>
 <script>
   import Subcategorie from './Subcategorie'
@@ -18,7 +32,7 @@
     data () {
       return {
         titel: this.thema.Titel,
-        icoon: this.thema.Icoon.path,
+        icoon: this.thema.Icoon,
         info: this.thema.Info,
         subcats: this.thema.Subcat,
         expanded: false
@@ -38,6 +52,9 @@
     methods: {
       handleClick () {
         this.expanded = !this.expanded
+      },
+      btnColor () {
+
       }
     }
   }
