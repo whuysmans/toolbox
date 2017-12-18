@@ -79,8 +79,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: 'doelen verduidelijken',
-      fiche: store.getters.getInfoFiche('doelen verduidelijken')[0]
+      title: 'pre-teaching',
+      fiche: store.getters.getInfoFiche('preteaching')[0]
     }
   },
   filters: {

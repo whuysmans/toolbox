@@ -1,7 +1,7 @@
 <template>
   <div class="content columns">
     <div class="column">
-      <article v-for="thema in themas" key="thema._id" class="media">
+      <article v-for="thema in themas" key="thema._id" class="media" @click.prevent="handleKernthemaClick">
         <div class="media-left">
           <span class="icon">
             <i class="fa fa-3x" :class="thema.Icoon"></i>
@@ -12,7 +12,7 @@
             <h2 class="subtitle">{{ thema.Titel }}</h2>
             <div v-html="thema.Info"></div>
             <div>
-              <a v-for="subcat in thema.Subcat" key="subcat._id" class="button" href="" @click.prevent="handleClick">
+              <a v-for="subcat in thema.Subcat" key="subcat._id" class="button" href="" @click.prevent.stop="handleSubcatClick">
                 {{ subcat.display }}
               </a>
             </div>
@@ -28,20 +28,30 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   props: ['themas', 'fiches'],
   data () {
     return {
-      search: ''
+      search: '',
+      isThemaSearch: false
     }
   },
   methods: {
     ...mapActions([
       'setActiveFilter'
     ]),
-    handleClick (event) {
+    ...mapGetters([
+      'getActiveFilter'
+    ]),
+    handleSubcatClick (event) {
       console.log(event.target.outerText)
+      this.isThemaSearch = false
+      this.setActiveFilter(event.target.outerText)
+      this.search = event.target.outerText
+    },
+    handleKernthemaClick (event) {
+      this.isThemaSearch = true
       this.setActiveFilter(event.target.outerText)
       this.search = event.target.outerText
     }
@@ -50,9 +60,9 @@ export default {
     filteredFiches () {
       let ficheArray = this.fiches
       return ficheArray.filter((fiche) => {
-        return fiche.Subcategorie.find((cat) => {
+        return !this.isThemaSearch ? fiche.Subcategorie.find((cat) => {
           return cat.display === this.search
-        })
+        }) : (fiche.Kernthemas.display === this.search)
       })
     }
   }

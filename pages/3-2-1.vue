@@ -65,8 +65,9 @@
         </article>
       </div>
     </div>
-    <pagination :slug="fiche.Slug"></pagination>
     <tags :fiche="fiche"></tags>
+    <pagination :slug="fiche.Slug"></pagination>
+    <tags></tags>
   </section>
 </template>
 <script>
@@ -79,8 +80,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: 'doelen verduidelijken',
-      fiche: store.getters.getInfoFiche('doelen verduidelijken')[0]
+      title: '3-2-1',
+      fiche: store.getters.getInfoFiche('3-2-1')[0]
     }
   },
   filters: {

@@ -65,23 +65,23 @@
         </article>
       </div>
     </div>
-    <div class="tags">
-      <div class="kern-thema button">
-        {{ fiche.Kernthemas.display }}
-      </div>
-      <div class="sub-cat">
-        <a v-for="cat in fiche.Subcategorie" href="" :key="cat._id" class="button">{{ cat.display }}</a>
-      </div>
-    </div>
+    <pagination :slug="fiche.Slug"></pagination>
+    <tags :fiche="fiche"></tags>  
   </section>
 </template>
 <script>
-  export default {
-    asyncData ({store, params}) {
-      return {
-        title: '3 minuten pauze',
-        fiche: store.getters.getInfoFiche('3 minuten pauze')[0]
-      }
+import Pagination from '../components/Pagination'
+import Tags from '../components/Tags'
+export default {
+  components: {
+    'pagination': Pagination,
+    'tags': Tags
+  },
+  asyncData ({store, params}) {
+    return {
+      title: '3 minuten pauze',
+      fiche: store.getters.getInfoFiche('3 minuten pauze')[0]
     }
   }
+}
 </script>
