@@ -1,9 +1,8 @@
 <template>
   <section class="container content">
     <div class="main">
-      <h2 class="title">
-      {{ fiche.Titel }}
-      </h2>
+      <page-header :titel="fiche.Titel"></page-header>
+      <tags :fiche="fiche"></tags>
       <div class="beschrijving box box-shadow box-padding">
         <article class="media">
           <div class="media-left">
@@ -66,16 +65,17 @@
       </div>
     </div>
     <pagination :slug="fiche.Slug"></pagination>
-    <tags :fiche="fiche"></tags>
   </section>
 </template>
 <script>
 import Pagination from '../components/Pagination'
 import Tags from '../components/Tags'
+import PageHeader from '../components/PageHeader'
 export default {
   components: {
     'pagination': Pagination,
-    'tags': Tags
+    'tags': Tags,
+    'page-header': PageHeader
   },
   asyncData ({store, params}) {
     return {

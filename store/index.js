@@ -10,9 +10,7 @@ const createStore = () => {
       infofiches: [],
       kernthemas: [],
       homeInfo: null,
-      apiUrl: 'http://localhost/cockpit2',
-      apiToken: '0b99c8afb03b2feb071b6bfe47d5cf',
-      assetsPath: '~/assets/'
+      activeFilter: ''
     },
 
     mutations: {
@@ -27,19 +25,25 @@ const createStore = () => {
       },
       LOAD_HOME_INFO (state, info) {
         state.homeInfo = info
+      },
+      SET_ACTIVE_FILTER (state, filter) {
+        state.activeFilter = filter
       }
     },
 
     actions: {
-      async nuxtServerInit ({state, commit}) {
+      async nuxtServerInit ({commit}) {
         let results = await Promise.all([
-          axios.get('http://localhost/cockpit2/api/collections/get/Infofiche?token=0b99c8afb03b2feb071b6bfe47d5cf'),
-          axios.get('http://localhost/cockpit2/api/collections/get/Kernthemas?token=0b99c8afb03b2feb071b6bfe47d5cf'),
-          axios.get('http://localhost/cockpit2/api/collections/get/HomeInfo?token=0b99c8afb03b2feb071b6bfe47d5cf')
+          axios.get('https://cockpit.prutstuin.be/api/collections/get/infofiche?token='),
+          axios.get('https://cockpit.prutstuin.be/api/collections/get/kernthemas?token='),
+          axios.get('https://cockpit.prutstuin.be/api/collections/get/homeinfo?token=')
         ])
         commit('LOAD_INFO_FICHES', results[0].data.entries)
         commit('LOAD_KERN_THEMAS', results[1].data.entries)
         commit('LOAD_HOME_INFO', results[2].data.entries)
+      },
+      setActiveFilter ({commit}, filter) {
+        commit('SET_ACTIVE_FILTER', filter)
       }
     },
 
@@ -53,16 +57,37 @@ const createStore = () => {
       getHomeInfo (state) {
         return state.homeInfo
       },
-      getAPIUrl (state) {
-        return state.apiUrl
-      },
-      getAssetsPath (state) {
-        return state.assetsPath
-      },
       getInfoFiche (state) {
         return (name) => {
           return state.infofiches.filter((fiche) => {
             return fiche.Titel.toLowerCase() === name
+          })
+        }
+      },
+      getInfoFicheIndex (state) {
+        return (name) => {
+          return state.infofiches.findIndex((fiche) => {
+            return fiche.Slug.toLowerCase() === name
+          })
+        }
+      },
+      getSlugByNumber (state) {
+        return (nr) => {
+          return state.infofiches[nr].Slug
+        }
+      },
+      getNumberOfFiches (state) {
+        return state.infofiches.length
+      },
+      getActiveFilter (state) {
+        return state.activeFilter
+      },
+      filterFiche (state) {
+        return (name) => {
+          return state.infofiches.filter((fiche) => {
+            return fiche.Subcategorie.find((subcat) => {
+              return subcat.display === name
+            })
           })
         }
       }

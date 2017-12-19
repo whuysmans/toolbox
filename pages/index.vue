@@ -1,15 +1,27 @@
 <template>
-  <section class="section">
-    <div class="container content">
-      <div>
-        <h1 class="title">{{ homeInfo.Titel }}</h1>
-        <div v-html="homeInfo.Beschrijving"></div>
+  <div>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            {{ homeInfo.Titel }}
+          </h1>
+          <h2 class="subtitle">
+            {{ homeInfo.Subtitle }}
+          </h2>
+        </div>
       </div>
-      <div>
-        <toolbox-filter :themas="themas" :fiches="fiches" :currentFilter="currentFilter"></toolbox-filter>
+    </section>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container content">
+          <div v-html="homeInfo.Beschrijving"></div>
+          <br>
+          <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -20,7 +32,6 @@ export default {
   },
   data () {
     return {
-      currentFilter: ''
     }
   },
   asyncData ({store, params}) {
@@ -30,13 +41,6 @@ export default {
       fiches: store.getters.getInfoFiches,
       activeFilter: store.getters.getActiveFilter
     }
-  },
-  beforeRouteEnter (to, from, next) {
-    next((vm) => {
-      if (vm.activeFilter && vm.activeFilter !== '') {
-        vm.currentFilter = vm.activeFilter
-      }
-    })
   }
 }
 </script>

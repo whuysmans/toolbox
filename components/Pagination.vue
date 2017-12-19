@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <nuxt-link v-if="isNotFirst" :to="prev" class="left">
+  <nav class="pagination" role="navigation" aria-label="navigation">
+    <nuxt-link v-if="isNotFirst" :to="prev" class="pagination-previous">
       back
     </nuxt-link>
-    <nuxt-link v-if="isNotLast" :to="next" class="right">
+    <nuxt-link v-if="isNotLast" :to="next" class="pagination-next">
       next
     </nuxt-link>
-  </div>
+  </nav>
 </template>
 <script>
 export default {
