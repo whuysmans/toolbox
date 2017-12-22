@@ -3,7 +3,7 @@
     <div class="main">
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
-      <div class="beschrijving box box-shadow box-padding">
+      <div class="beschrijving box box-shadow box-padding test">
         <article class="media">
           <div class="media-left">
             <span class="icon">
