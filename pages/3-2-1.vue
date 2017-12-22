@@ -1,13 +1,13 @@
 <template>
   <section class="container content">
     <div class="main">
-      <page-header :titel="fiche.Titel"></page-header>
+      <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
       <div class="beschrijving box box-shadow box-padding">
         <article class="media">
           <div class="media-left">
             <span class="icon">
-              <i class="fa fa-3x" :class="fiche.BeschrijvingIcoon"></i>
+              <i class="fa fa-3x" :class="[fiche.BeschrijvingIcoon, textColor]"></i>
             </span>
           </div>
           <div class="media-content">
@@ -22,7 +22,7 @@
         <article class="media">
           <div class="media-left">
             <span class="icon">
-              <i class="fa fa-3x" :class="fiche.WerkingIcoon"></i>
+              <i class="fa fa-3x" :class="[fiche.WerkingIcoon, textColor]"></i>
             </span>
           </div>
           <div class="media-content">
@@ -37,7 +37,7 @@
         <article class="media">
           <div class="media-left">
             <span class="icon">
-              <i class="fa fa-3x" :class="fiche.TipsIcoon"></i>
+              <i class="fa fa-3x" :class="[fiche.TipsIcoon, textColor]"></i>
             </span>
           </div>
           <div class="media-content">
@@ -52,7 +52,7 @@
         <article class="media">
           <div class="media-left">
             <span class="icon">
-              <i class="fa fa-3x" :class="fiche.VoorbeeldenIcoon"></i>
+              <i class="fa fa-3x" :class="[fiche.VoorbeeldenIcoon, textColor]"></i>
             </span>
           </div>
           <div class="media-content">
@@ -81,6 +81,14 @@ export default {
     return {
       title: '3-2-1',
       fiche: store.getters.getInfoFiche('3-2-1')[0]
+    }
+  },
+  computed: {
+    backgroundColor () {
+      return this.$store.getters.getClassSlug(this.fiche.Kernthemas.display)
+    },
+    textColor () {
+      return 'icon-' + this.$store.getters.getClassSlug(this.fiche.Kernthemas.display)
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
-  <section class="hero is-primary">
+  <section class="hero" :class="this.color">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          {{ titel }}
+          {{ fiche.Titel }}
         </h1>
       </div>
     </div>
@@ -11,6 +11,9 @@
 </template>
 <script>
   export default {
-    props: ['titel']
+    props: ['fiche', 'color']
   }
 </script>
+<style>
+  
+</style>

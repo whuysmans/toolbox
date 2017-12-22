@@ -79,8 +79,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: '3 minuten pauze',
-      fiche: store.getters.getInfoFiche('3-min-pauze')[0]
+      title: 'Vraag- en antwoordspel',
+      fiche: store.getters.getInfoFiche('vraag-en-antwoordspel')[0]
     }
   },
   computed: {

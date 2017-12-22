@@ -1,0 +1,32 @@
+.page-enter-active, .page-leave-active {
+  transition: opacity .2s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}
+.zichtbaar-maken {
+    background-color: #54cee7;
+}
+.veilig-leerklimaat {
+  background-color: #c6e0dd;
+}
+.leren-bijsturen {
+  background-color: #e9d4d6;
+}
+.icon-zichtbaar-maken {
+  color: #54cee7;
+}
+.icon-veilig-leerklimaat {
+  color: #c6e0dd;
+}
+.icon-leren-bijsturen {
+  color: #e9d4d6;
+}
+.home-hero {
+  background-color: #fad3d9;
+}
+.home-tile {
+  border: 1px solid #fad3d9;
+}
+
+

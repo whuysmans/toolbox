@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <section class="hero is-primary">
+  <div class="home">
+    <section class="hero home-hero">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
@@ -45,9 +45,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .links {
   padding-top: 15px;
 }
+
 </style>

@@ -1,14 +1,14 @@
 <template>
-  <div class="content">
+  <div class="content filter">
     <div class="">
       <h3 class="title">Filter op de fiches</h3>
     </div>
     <div class="content tile is-ancestor">
       <div class="tile is-7 is-vertical is-parent">
-        <div class="box tile is-child">
+        <div class="box tile is-child home-tile">
           <article v-for="thema in themas" key="thema._id" class="media" @click.prevent="handleKernthemaClick">
             <figure class="media-left">
-              <span class="icon has-text-success">
+              <span class="icon">
                 <i class="fa fa-2x" :class="thema.Icoon"></i>
               </span>
             </figure>
@@ -17,7 +17,7 @@
                 <h2 class="subtitle">{{ thema.Titel }}</h2>
                 <div v-html="thema.Info"></div>
                 <div>
-                  <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-light is-medium" href="" @click.prevent.stop="handleSubcatClick">
+                  <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-white is-medium" href="" @click.prevent.stop="handleSubcatClick">
                     {{ subcat.display }}
                   </a>
                 </div>
@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="tile is-parent">
-        <article class="tile is-child box">
-          <nuxt-link v-for="fiche in filteredFiches" :to="fiche.Slug" class="tag is-light is-medium">{{ fiche.Titel }}</nuxt-link>
+        <article class="tile is-child box home-tile">
+          <nuxt-link v-for="fiche in filteredFiches" :to="fiche.Slug" class="tag is-white is-medium">{{ fiche.Titel }}</nuxt-link>
         </article>
       </div> 
     </div>
@@ -79,3 +79,7 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+
+</style>
