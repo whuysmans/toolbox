@@ -1,12 +1,4 @@
-const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
-  router: {
-    base: '/toolbox/'
-  }
-} : {}
-
 module.exports = {
-  
-  ...routerBase,
 
   debug: true,
   /*
