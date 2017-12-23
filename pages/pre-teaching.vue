@@ -3,65 +3,27 @@
     <div class="main">
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
-      <div class="beschrijving box box-shadow box-padding test">
-        <article class="media">
-          <div class="media-left">
-            <span class="icon">
-              <i class="fa fa-3x" :class="[fiche.BeschrijvingIcoon, textColor]"></i>
-            </span>
-          </div>
-          <div class="media-content">
-            <p>
-              <h3 class="subtitle">Beschrijving</h3>
-              <div v-html="fiche.Beschrijving"></div>
-            </p>
-          </div>
-        </article>
-      </div>
-      <div class="werking box box-shadow box-padding">
-        <article class="media">
-          <div class="media-left">
-            <span class="icon">
-              <i class="fa fa-3x" :class="[fiche.WerkingIcoon, textColor]"></i>
-            </span>
-          </div>
-          <div class="media-content">
-            <p>
-              <h3 class="subtitle">Werking</h3>
-              <div v-html="fiche.Werking"></div>
-            </p>
-          </div>
-        </article>
-      </div>
-      <div class="tips box box-shadow box-padding">
-        <article class="media">
-          <div class="media-left">
-            <span class="icon">
-              <i class="fa fa-3x" :class="[fiche.TipsIcoon, textColor]"></i>
-            </span>
-          </div>
-          <div class="media-content">
-            <p>
-              <h3 class="subtitle">Tips</h3>
-              <div v-html="fiche.Tips"></div>
-            </p>
-          </div>
-        </article>
-      </div>
-      <div class="voorbeelden box box-shadow box-padding">
-        <article class="media">
-          <div class="media-left">
-            <span class="icon">
-              <i class="fa fa-3x" :class="[fiche.VoorbeeldenIcoon, textColor]"></i>
-            </span>
-          </div>
-          <div class="media-content">
-            <p>
-              <h3 class="subtitle">Voorbeelden</h3>
-              <div v-html="fiche.Voorbeelden"></div>
-            </p>
-          </div>
-        </article>
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child">
+            <h3 class="subtitle"><i class="fa" :class="[fiche.BeschrijvingIcoon, textColor]"></i> Beschrijving</h3>
+            <div v-html="fiche.Beschrijving"></div>
+          </article>
+          <article class="tile is-child">
+            <h3 class="subtitle"><i class="fa" :class="[fiche.WerkingIcoon, textColor]"></i> Werking</h3>
+            <div v-html="fiche.Werking"></div>
+          </article>
+        </div>
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child">
+            <h3 class="subtitle"><i class="fa" :class="[fiche.TipsIcoon, textColor]"></i> Tips</h3>
+            <div v-html="fiche.Tips"></div>
+          </article>
+          <article class="tile is-child">
+            <h3 class="subtitle"><i class="fa" :class="[fiche.VoorbeeldenIcoon, textColor]"></i> Voorbeelden</h3>
+            <div v-html="fiche.Voorlbeelden"></div>
+          </article>
+        </div>
       </div>
     </div>
     <pagination :slug="fiche.Slug"></pagination>
