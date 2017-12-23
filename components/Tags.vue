@@ -1,9 +1,9 @@
 <template>
-  <div class="tags">
-    <nuxt-link class="kern-thema tag is-light is-medium" to="/" @click.native="handleClick">
+  <div class="page tags">
+    <nuxt-link class="kern-thema tag is-white is-medium" to="/" @click.native="handleClick">
       {{ fiche.Kernthemas.display }}
     </nuxt-link>
-    <nuxt-link v-for="cat in fiche.Subcategorie" to="/" :key="cat._id" class="tag is-light is-medium" @click.native="handleClick">
+    <nuxt-link v-for="cat in fiche.Subcategorie" to="/" :key="cat._id" class="tag is-white is-medium" @click.native="handleClick">
       {{ cat.display }}
     </nuxt-link>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="column">
     <h2 class="subtitle">Filter op de fiches</h2>
-    <div class="content tile is-ancestor">
+    <div class="filter content tile is-ancestor">
       <div class="tile is-vertical is-parent">
         <article v-if="showFilter" class="tile is-child box tags">
           <nuxt-link v-for="fiche in filteredFiches" :to="fiche.Slug" :class="backgroundColor(fiche.Kernthemas.display)" class="tag is-medium">{{ fiche.Titel }}</nuxt-link>
