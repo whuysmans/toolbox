@@ -1,34 +1,19 @@
 <template>
-  <div class="content filter">
-    <div class="">
-      <h3 class="title">Filter op de fiches</h3>
-    </div>
+  <div class="column">
+    <h2 class="subtitle">Filter op de fiches</h2>
     <div class="content tile is-ancestor">
-      <div class="tile is-7 is-vertical is-parent">
-        <div class="box tile is-child home-tile">
-          <article v-for="thema in themas" key="thema._id" class="media" @click.prevent="handleKernthemaClick">
-            <figure class="media-left">
-              <span class="icon">
-                <i class="fa fa-2x" :class="thema.Icoon"></i>
-              </span>
-            </figure>
-            <div class="media-content">
-              <p>
-                <h2 class="subtitle">{{ thema.Titel }}</h2>
-                <div v-html="thema.Info"></div>
-                <div>
-                  <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-white is-medium" href="" @click.prevent.stop="handleSubcatClick">
-                    {{ subcat.display }}
-                  </a>
-                </div>
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box home-tile">
-          <nuxt-link v-for="fiche in filteredFiches" :to="fiche.Slug" class="tag is-white is-medium">{{ fiche.Titel }}</nuxt-link>
+      <div class="tile is-vertical is-parent">
+        <article v-if="showFilter" class="tile is-child box tags">
+          <nuxt-link v-for="fiche in filteredFiches" :to="fiche.Slug" :class="backgroundColor(fiche.Kernthemas.display)" class="tag is-medium">{{ fiche.Titel }}</nuxt-link>
+        </article>
+        <article v-for="thema in themas" class="box tile is-child" key="thema._id" @click.prevent="handleKernthemaClick">
+          <h3 class=""><i class="fa" :class="[thema.Icoon, 'tekst-' + thema.Slug]"></i> {{ thema.Titel }}</h3>
+          <div v-html="thema.Info"></div>
+          <div class="tags">
+            <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-medium" :class="thema.Slug" href="" @click.prevent.stop="handleSubcatClick">
+              {{ subcat.display }}
+            </a>
+          </div>
         </article>
       </div> 
     </div>
@@ -38,6 +23,11 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   props: ['themas', 'fiches'],
+  filters: {
+    'classify': (val) => {
+      return val.replace(/\s/ig, '-')
+    }
+  },
   data () {
     return {
       searchText: '',
@@ -49,7 +39,8 @@ export default {
       'setActiveFilter'
     ]),
     ...mapGetters([
-      'getActiveFilter'
+      'getActiveFilter',
+      'getClassSlug'
     ]),
     handleSubcatClick (event) {
       let text = event.target.outerText
@@ -75,6 +66,12 @@ export default {
           return cat.display === this.searchText
         }) : (fiche.Kernthemas.display === this.searchText)
       })
+    },
+    showFilter () {
+      return this.filteredFiches.length !== 0
+    },
+    backgroundColor (title) {
+      return this.getClassSlug(title)
     }
   }
 }

@@ -88,7 +88,7 @@ export default {
       return this.$store.getters.getClassSlug(this.fiche.Kernthemas.display)
     },
     textColor () {
-      return 'icon-' + this.$store.getters.getClassSlug(this.fiche.Kernthemas.display)
+      return 'tekst-' + this.$store.getters.getClassSlug(this.fiche.Kernthemas.display)
     }
   }
 }

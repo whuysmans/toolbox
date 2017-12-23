@@ -4,7 +4,7 @@
       vorige fiche
     </nuxt-link>
     <nuxt-link v-if="isNotLast" :to="next" class="pagination-next">
-      volgende fiche
+      volgende
     </nuxt-link>
   </nav>
 </template>

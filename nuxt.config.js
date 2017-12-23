@@ -38,9 +38,9 @@ module.exports = {
     }
   },
   css: [
-    { src: 'assets/main.css' },
     { src: 'bulma/bulma.sass', lang: 'sass' },
-    { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' }
+    { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' },
+    { src: 'assets/main.css' }
   ],
   plugins: ['~/plugins/filters.js']
 }

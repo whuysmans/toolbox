@@ -12,11 +12,13 @@
         </div>
       </div>
     </section>
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container content">
-          <div v-html="homeInfo.Beschrijving"></div>
-          <br>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-three-fifths">
+            <h2 class="subtitle">Werking van de Toolbox</h2>
+            <div v-html="homeInfo.Beschrijving"></div>
+          </div>
           <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
         </div>
       </div>
