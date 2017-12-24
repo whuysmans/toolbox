@@ -32,15 +32,7 @@
         </div>
       </div>
     </div>
-    <div v-if="fiche.Toelichting" class="modal" :class="activeState">
-      <div class="modal-background" @click.prevent.stop="toggleModal"></div>
-      <div class="modal-content">
-        <div class="box">
-          <article v-html="fiche.Toelichting"></article>
-        </div>
-      </div>
-      <button class="modal-close is-large" @click="toggleModal"></button>
-    </div>
+    <modal v-if="fiche.Toelichting" :fiche="fiche"></modal>
     <pagination :slug="fiche.Slug"></pagination>
   </section>
 </template>
@@ -48,32 +40,24 @@
 import Pagination from '../components/Pagination'
 import Tags from '../components/Tags'
 import PageHeader from '../components/PageHeader'
+import Modal from '../components/Modal'
 export default {
   components: {
     'pagination': Pagination,
     'tags': Tags,
-    'page-header': PageHeader
-  },
-  data () {
-    return {
-      activeState: ''
-    }
+    'page-header': PageHeader,
+    'modal': Modal
   },
   asyncData ({store, params}) {
     return {
-      title: 'doelen verduidelijken',
-      fiche: store.getters.getInfoFiche('doelen-verduidelijken')[0]
+      title: 'Verlengde instructie',
+      fiche: store.getters.getInfoFiche('verlengde-instructie')[0]
     }
   },
   filters: {
     fixPath (str) {
       const pattern = /([^/]+\.(bmp|jpg|svg))$/
       return str.match(pattern)[1]
-    }
-  },
-  methods: {
-    toggleModal () {
-      this.activeState === '' ? this.activeState = 'is-active' : this.activeState = ''
     }
   },
   computed: {

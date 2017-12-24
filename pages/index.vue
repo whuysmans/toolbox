@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <nav-bar></nav-bar>
     <section class="hero home-hero">
       <div class="hero-body">
         <div class="container">
@@ -28,9 +29,11 @@
 
 <script>
 import Filter from '../components/Filter'
+import Navbar from '../components/Navbar'
 export default {
   components: {
-    'toolbox-filter': Filter
+    'toolbox-filter': Filter,
+    'nav-bar': Navbar
   },
   data () {
     return {

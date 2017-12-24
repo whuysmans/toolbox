@@ -1,5 +1,6 @@
 <template>
-  <section class="hero" :class="this.color">
+  <section class="hero" :class="color">
+    <nav-bar></nav-bar>
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -10,9 +11,13 @@
   </section>
 </template>
 <script>
-  export default {
-    props: ['fiche', 'color']
-  }
+import Navbar from './Navbar'
+export default {
+  components: {
+    'nav-bar': Navbar
+  },
+  props: ['fiche', 'color']
+}
 </script>
 <style>
   
