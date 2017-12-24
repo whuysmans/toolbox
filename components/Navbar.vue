@@ -5,13 +5,13 @@
         </div>
         <div class="navbar-menu">
           <div class="navbar-start"></div>
-          <div class="navbar-end">
+          <div class="navbar-end" style="margin-right: 2em;">
             <div class="navbar-item is-hoverable">
               <nuxt-link  style="color: black;" to="/">Teacher Zone</nuxt-link>
             </div>
-          </div>
-          <div class="navbar-item is-hoverable">
-            <nuxt-link style="color: black;" to="/">Bibliografie</nuxt-link>
+            <div class="navbar-item is-hoverable">
+              <nuxt-link style="color: black;" to="/">Bibliografie</nuxt-link>
+            </div>
           </div>
         </div>
       </div>
