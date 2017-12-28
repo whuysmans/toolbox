@@ -21,11 +21,18 @@
           </article>
           <article class="tile is-child">
             <h3 class="subtitle"><i class="fa" :class="[fiche.VoorbeeldenIcoon, textColor]"></i> Voorbeelden</h3>
-            <div v-html="fiche.Voorlbeelden"></div>
+            <div v-html="fiche.Voorbeelden"></div>
+          </article>
+          <article v-if="fiche.Reflectie"class="tile is-child">
+            <h3 class="subtitle"><i class="fa" :class="[fiche.ReflectieIcoon, textColor]"></i> Reflectie</h3>
+            <div>
+              Op welke momenten verduidelijk je de doelen al? Om je hiervan bewust te worden, kan je deze <a @click="toggleModal">oefening reflectieopdracht doelen</a> maken.
+            </div>
           </article>
         </div>
       </div>
     </div>
+    <modal v-if="fiche.Toelichting" :fiche="fiche"></modal>
     <pagination :slug="fiche.Slug"></pagination>
   </section>
 </template>
@@ -33,16 +40,29 @@
 import Pagination from '../components/Pagination'
 import Tags from '../components/Tags'
 import PageHeader from '../components/PageHeader'
+import Modal from '../components/Modal'
 export default {
   components: {
     'pagination': Pagination,
     'tags': Tags,
-    'page-header': PageHeader
+    'page-header': PageHeader,
+    'modal': Modal
   },
   asyncData ({store, params}) {
     return {
-      title: 'Vraag- en antwoordspel',
-      fiche: store.getters.getInfoFiche('vraag-en-antwoord-spel')[0]
+      title: 'Handsignalen',
+      fiche: store.getters.getInfoFiche('handsignalen')[0]
+    }
+  },
+  filters: {
+    fixPath (str) {
+      const pattern = /([^/]+\.(bmp|jpg|svg))$/
+      return str.match(pattern)[1]
+    }
+  },
+  methods: {
+    toggleModal () {
+      this.activeState === '' ? this.activeState = 'is-active' : this.activeState = ''
     }
   },
   computed: {
