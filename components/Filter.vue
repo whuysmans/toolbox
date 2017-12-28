@@ -4,7 +4,12 @@
     <div class="filter content tile is-ancestor">
       <div class="tile is-vertical is-parent">
         <article v-if="showFilter" class="tile is-child box tags">
-          <nuxt-link v-for="fiche in filteredFiches" :to="fiche.Slug" :class="backgroundColor(fiche.Kernthemas.display)" class="tag is-medium">{{ fiche.Titel }}</nuxt-link>
+          <nuxt-link v-for="(fiche, index) in filteredFiches" 
+            :to="fiche.Slug" 
+            :key="index"
+            :class="backgroundColor(fiche.Kernthemas.display)" 
+            class="tag is-medium">{{ fiche.Titel }}
+          </nuxt-link>
         </article>
         <article v-for="thema in themas" class="box tile is-child" key="thema._id" @click.prevent="handleKernthemaClick">
           <h3 class=""><i class="fa" :class="[thema.Icoon, 'tekst-' + thema.Slug]"></i> {{ thema.Titel }}</h3>
@@ -58,6 +63,7 @@ export default {
   computed: {
     filteredFiches () {
       let ficheArray = this.fiches
+      console.log(ficheArray)
       if (this.getActiveFilter() !== '') {
         this.searchText = this.getActiveFilter()
       }

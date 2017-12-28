@@ -12,22 +12,22 @@ rood: f14441
 .page-enter, .page-leave-to {
   opacity: 0;
 }
-.zichtbaar-maken,
-.tag.zichtbaar-maken {
+.leren-zichtbaar-maken,
+.tag.leren-zichtbaar-maken {
   background-color: #54cee7;
 }
-.veilig-leerklimaat,
-.tag.veilig-leerklimaat {
+.leren-in-een-veilig-en-stimulerend-leerklimaat,
+.tag.leren-in-een-veilig-en-stimulerend-leerklimaat {
   background-color: #c6e0dd;
 }
 .leren-bijsturen,
 .tag.leren-bijsturen {
   background-color: #e9d4d6;
 }
-.tekst-zichtbaar-maken {
+.tekst-leren-zichtbaar-maken {
   color: #54cee7;
 }
-.tekst-veilig-leerklimaat {
+.tekst-leren-in-een-veilig-en-stimulerend-leerklimaat {
   color: #c6e0dd;
 }
 .tekst-leren-bijsturen {

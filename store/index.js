@@ -42,9 +42,12 @@ const createStore = () => {
     actions: {
       async nuxtServerInit ({commit}) {
         let results = await Promise.all([
-          axios.get('https://cockpit.prutstuin.be/api/collections/get/infofiche?token=ea4a4e833ce371de89666bbba2a149'),
-          axios.get('https://cockpit.prutstuin.be/api/collections/get/kernthemas?token=ea4a4e833ce371de89666bbba2a149'),
-          axios.get('https://cockpit.prutstuin.be/api/collections/get/homeinfo?token=ea4a4e833ce371de89666bbba2a149')
+          // axios.get('https://cockpit.prutstuin.be/api/collections/get/infofiche?token=ea4a4e833ce371de89666bbba2a149'),
+          // axios.get('https://cockpit.prutstuin.be/api/collections/get/kernthemas?token=ea4a4e833ce371de89666bbba2a149'),
+          // axios.get('https://cockpit.prutstuin.be/api/collections/get/homeinfo?token=ea4a4e833ce371de89666bbba2a149')
+          axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/infofiches'),
+          axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/kernthemas'),
+          axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/homeinfo')
         ])
         commit('LOAD_INFO_FICHES', results[0].data.entries)
         commit('LOAD_KERN_THEMAS', results[1].data.entries)

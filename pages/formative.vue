@@ -41,8 +41,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: 'Vraag- en antwoordspel',
-      fiche: store.getters.getInfoFiche('vraag-en-antwoord-spel')[0]
+      title: 'Formative',
+      fiche: store.getters.getInfoFiche('formative')[0]
     }
   },
   computed: {

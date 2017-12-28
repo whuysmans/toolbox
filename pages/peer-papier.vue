@@ -41,8 +41,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: 'Vraag- en antwoordspel',
-      fiche: store.getters.getInfoFiche('vraag-en-antwoord-spel')[0]
+      title: 'Peer-Papier',
+      fiche: store.getters.getInfoFiche('peer-papier')[0]
     }
   },
   computed: {
