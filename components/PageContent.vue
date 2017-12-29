@@ -1,5 +1,5 @@
 <template>
-  <div class="fiche-content">
+  <div class="fiche-content section">
     <article class="fiche-item beschrijving">
       <h3 class="subtitle"><i class="fa" :class="[fiche.BeschrijvingIcoon, color]"></i> Beschrijving</h3>
       <div v-html="fiche.Beschrijving"></div>

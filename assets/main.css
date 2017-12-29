@@ -40,8 +40,8 @@ rood: f14441
   z-index: 40;
 }
 .fiche-content {
-  margin: 0 auto;
-  width: 45em;
+  margin: 2em auto;
+  max-width: 45em;
 }
 .fiche-item {
   margin-top: 1em;
