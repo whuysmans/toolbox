@@ -3,7 +3,7 @@
     <div class="main">
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
-      <page-content :slug="fiche.Slug" :color="textColor"></page-content>
+      <page-content :fiche="fiche" :color="textColor"></page-content>
     </div>
     <pagination :slug="fiche.Slug"></pagination>
   </section>
