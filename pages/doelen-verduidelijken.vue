@@ -3,44 +3,9 @@
     <div class="main">
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
-      <div class="tile is-ancestor">
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child">
-            <h3 class="subtitle"><i class="fa" :class="[fiche.BeschrijvingIcoon, textColor]"></i> Beschrijving</h3>
-            <div v-html="fiche.Beschrijving"></div>
-          </article>
-          <article class="tile is-child">
-            <h3 class="subtitle"><i class="fa" :class="[fiche.WerkingIcoon, textColor]"></i> Werking</h3>
-            <div v-html="fiche.Werking"></div>
-          </article>
-        </div>
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child">
-            <h3 class="subtitle"><i class="fa" :class="[fiche.TipsIcoon, textColor]"></i> Tips</h3>
-            <div v-html="fiche.Tips"></div>
-          </article>
-          <article class="tile is-child">
-            <h3 class="subtitle"><i class="fa" :class="[fiche.VoorbeeldenIcoon, textColor]"></i> Voorbeelden</h3>
-            <div v-html="fiche.Voorbeelden"></div>
-          </article>
-          <article v-if="fiche.Reflectie"class="tile is-child">
-            <h3 class="subtitle"><i class="fa" :class="[fiche.ReflectieIcoon, textColor]"></i> Reflectie</h3>
-            <div>
-              Op welke momenten verduidelijk je de doelen al? Om je hiervan bewust te worden, kan je deze <a @click="toggleModal">oefening reflectieopdracht doelen</a> maken.
-            </div>
-          </article>
-        </div>
-      </div>
+      <page-content :fiche="fiche" :color="textColor"></page-content>
     </div>
-    <div v-if="fiche.Toelichting" class="modal" :class="activeState">
-      <div class="modal-background" @click.prevent.stop="toggleModal"></div>
-      <div class="modal-content">
-        <div class="box">
-          <article v-html="fiche.Toelichting"></article>
-        </div>
-      </div>
-      <button class="modal-close is-large" @click="toggleModal"></button>
-    </div>
+    <modal v-if="fiche.Toelichting" :fiche="fiche"></modal>
     <pagination :slug="fiche.Slug"></pagination>
   </section>
 </template>
@@ -48,11 +13,15 @@
 import Pagination from '../components/Pagination'
 import Tags from '../components/Tags'
 import PageHeader from '../components/PageHeader'
+import PageContent from '../components/PageContent'
+import Modal from '../components/Modal'
 export default {
   components: {
     'pagination': Pagination,
     'tags': Tags,
-    'page-header': PageHeader
+    'page-header': PageHeader,
+    'modal': Modal,
+    'page-content': PageContent
   },
   data () {
     return {
@@ -69,11 +38,6 @@ export default {
     fixPath (str) {
       const pattern = /([^/]+\.(bmp|jpg|svg))$/
       return str.match(pattern)[1]
-    }
-  },
-  methods: {
-    toggleModal () {
-      this.activeState === '' ? this.activeState = 'is-active' : this.activeState = ''
     }
   },
   computed: {
