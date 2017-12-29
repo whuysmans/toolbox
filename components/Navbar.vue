@@ -1,9 +1,13 @@
 <template>
   <nav class="navbar is-fixed-top">
       <div class="container">
-        <div class="navbar-brand">
+        <div class="navbar-brand" :class="{'is-active': isActive}" @click="isActive = !isActive">
+          <button class="navbar-burger">
+            <span></span>
+            <span></span>
+          </button>
         </div>
-        <div class="navbar-menu">
+        <div class="navbar-menu" :class="{'is-active': isActive}">
           <div class="navbar-start"></div>
           <div class="navbar-end" style="margin-right: 2em;">
             <div class="navbar-item is-hoverable">
@@ -17,3 +21,12 @@
       </div>
     </nav>
 </template>
+<script>
+  export default {
+    data () {
+      return {
+        isActive: false
+      }
+    }
+  }
+</script>
