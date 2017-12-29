@@ -36,4 +36,7 @@ rood: f14441
 .home .hero-body {
   border-bottom: 1px solid black;
 }
+.modal.is-active {
+  z-index: 40;
+}
 
