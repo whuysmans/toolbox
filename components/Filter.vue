@@ -4,6 +4,7 @@
     <div class="filter content tile is-ancestor">
       <div class="tile is-vertical is-parent">
         <article v-if="showFilter" class="tile is-child box tags">
+          <h5>Fiches:</h5>
           <nuxt-link v-for="(fiche, index) in filteredFiches" 
             :to="fiche.Slug" 
             :key="index"

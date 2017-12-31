@@ -3,7 +3,10 @@
     <div class="main">
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
-      <page-content :fiche="fiche" :color="textColor"></page-content>
+      <div class="section">
+        <aside-menu class="sticky-menu"></aside-menu>
+        <page-content :fiche="fiche" :color="textColor"></page-content>
+      </div>
     </div>
     <modal v-if="fiche.Toelichting" :fiche="fiche"></modal>
     <pagination :slug="fiche.Slug"></pagination>
@@ -15,13 +18,15 @@ import Tags from '../components/Tags'
 import PageHeader from '../components/PageHeader'
 import PageContent from '../components/PageContent'
 import Modal from '../components/Modal'
+import Aside from '../components/Aside'
 export default {
   components: {
     'pagination': Pagination,
     'tags': Tags,
     'page-header': PageHeader,
+    'page-content': PageContent,
     'modal': Modal,
-    'page-content': PageContent
+    'aside-menu': Aside
   },
   data () {
     return {

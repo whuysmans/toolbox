@@ -3,7 +3,10 @@
     <div class="main">
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
-      <page-content :fiche="fiche" :color="textColor"></page-content>
+      <div class="section">
+        <aside-menu class="sticky-menu"></aside-menu>
+        <page-content :fiche="fiche" :color="textColor"></page-content>
+      </div>
     </div>
     <pagination :slug="fiche.Slug"></pagination>
   </section>
@@ -13,12 +16,14 @@ import Pagination from '../components/Pagination'
 import Tags from '../components/Tags'
 import PageHeader from '../components/PageHeader'
 import PageContent from '../components/PageContent'
+import Aside from '../components/Aside'
 export default {
   components: {
     'pagination': Pagination,
     'tags': Tags,
     'page-header': PageHeader,
-    'page-content': PageContent
+    'page-content': PageContent,
+    'aside-menu': Aside
   },
   asyncData ({store, params}) {
     return {

@@ -1,18 +1,18 @@
 <template>
-  <div class="fiche-content section">
-    <article class="fiche-item beschrijving">
+  <div class="fiche-content">
+    <article id="beschrijving" class="fiche-item beschrijving">
       <h3 class="subtitle"><i class="fa" :class="[fiche.BeschrijvingIcoon, color]"></i> Beschrijving</h3>
       <div v-html="fiche.Beschrijving"></div>
     </article>
-    <article class="fiche-item werking">
+    <article id="werking" class="fiche-item werking">
       <h3 class="subtitle"><i class="fa" :class="[fiche.WerkingIcoon, color]"></i> Werking</h3>
       <div v-html="fiche.Werking"></div>
     </article>
-    <article class="fiche-item tips">
+    <article id="tips" class="fiche-item tips">
       <h3 class="subtitle"><i class="fa" :class="[fiche.TipsIcoon, color]"></i> Tips</h3>
       <div v-html="fiche.Tips"></div>
     </article>
-    <article class="fiche-item voorbeelden">
+    <article id="voorbeelden" class="fiche-item voorbeelden">
       <h3 class="subtitle"><i class="fa" :class="[fiche.VoorbeeldenIcoon, color]"></i> Voorbeelden</h3>
       <div v-html="fiche.Voorbeelden"></div>
     </article>
