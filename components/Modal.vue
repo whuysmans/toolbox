@@ -1,26 +1,37 @@
 <template>
-  <div class="modal" :class="activeState">
-    <div class="modal-background" @click.prevent="toggleModal"></div>
+  <div class="modal" :class="activeState()">
+    <div class="modal-background" @click.prevent="closeModal"></div>
     <div class="modal-content">
       <div class="box">
         <article v-html="fiche.Toelichting"></article>
       </div>
     </div>
-    <button class="modal-close is-large" @click.prevent.stop="toggleModal"></button>
+    <button class="modal-close is-large" @click.prevent.stop="closeModal"></button>
     </div>
 </template>
 <script>
-  export default {
-    props: ['fiche'],
-    data () {
-      return {
-        activeState: ''
-      }
-    },
-    methods: {
-      toggleModal () {
-        this.activeState === '' ? this.activeState = 'is-active' : this.activeState = ''
-      }
+import { mapGetters, mapActions } from 'vuex'
+export default {
+  props: ['fiche'],
+  data () {
+    return {
+    }
+  },
+  methods: {
+    ...mapGetters([
+      'getActiveState'
+    ]),
+    ...mapActions([
+      'setActiveState'
+    ]),
+    closeModal () {
+      this.setActiveState('')
+    }
+  },
+  computed: {
+    activeState () {
+      return this.getActiveState
     }
   }
+}
 </script>

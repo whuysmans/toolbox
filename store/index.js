@@ -12,7 +12,8 @@ const createStore = () => {
       homeInfo: null,
       activeFilter: '',
       activeNav: '',
-      classSlug: {}
+      classSlug: {},
+      activeState: ''
     },
 
     mutations: {
@@ -22,11 +23,19 @@ const createStore = () => {
         })
       },
       LOAD_KERN_THEMAS (state, themas) {
+        // dirty hack to load them in the right order
+        state.kernthemas.push(themas.find((thema) => {
+          return thema._id === 4
+        }))
+        state.kernthemas.push(themas.find((thema) => {
+          return thema._id === 2
+        }))
+        state.kernthemas.push(themas.find((thema) => {
+          return thema._id === 3
+        }))
         themas.map((thema) => {
-          state.kernthemas.push(thema)
           state.classSlug[thema.Titel] = thema.Slug
         })
-        // console.log(state)
       },
       LOAD_HOME_INFO (state, info) {
         state.homeInfo = info
@@ -36,6 +45,9 @@ const createStore = () => {
       },
       SET_ACTIVE_NAV (state, nav) {
         state.activeNav = nav
+      },
+      SET_ACTIVE_STATE (state, active) {
+        state.activeState = active
       }
     },
 
@@ -58,6 +70,9 @@ const createStore = () => {
       },
       setActiveNav ({commit}, nav) {
         commit('SET_ACTIVE_NAV', nav)
+      },
+      setActiveState ({commit}, active) {
+        commit('SET_ACTIVE_STATE', active)
       }
     },
 
@@ -112,6 +127,9 @@ const createStore = () => {
             })
           })
         }
+      },
+      getActiveState (state) {
+        return state.activeState
       }
     }
   })

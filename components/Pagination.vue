@@ -28,10 +28,10 @@ export default {
       return this.$store.getters.getInfoFicheIndex(this.slug)
     },
     next () {
-      return this.isNotLast ? this.$store.getters.getSlugByNumber(this.nr + 1) : 0
+      return this.isNotLast ? this.$store.getters.getSlugByNumber(this.nr + 1) : ''
     },
     prev () {
-      return this.isNotFirst ? this.$store.getters.getSlugByNumber(this.nr - 1) : this.$store.getters.getNumberOfFiches - 1
+      return this.isNotFirst ? this.$store.getters.getSlugByNumber(this.nr - 1) : ''
     }
   }
 }

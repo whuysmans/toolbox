@@ -64,7 +64,6 @@ export default {
   computed: {
     filteredFiches () {
       let ficheArray = this.fiches
-      console.log(ficheArray)
       if (this.getActiveFilter() !== '') {
         this.searchText = this.getActiveFilter()
       }
