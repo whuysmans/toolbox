@@ -88,9 +88,6 @@ ul.side-nav > li {
     width: 100%;
   }
 }
-nav.pagination a  {
-  background: red;
-}
 
 .navbar-item {
   background-color: white;
