@@ -1,10 +1,10 @@
 <template>
   <nav class="pagination" role="navigation" aria-label="navigation">
     <nuxt-link :to="prev" class="pagination-previous" :disabled="!isNotFirst">
-      vorige fiche
+      <
     </nuxt-link>
     <nuxt-link :to="next" class="pagination-next" :disabled="!isNotLast">
-      volgende
+      >
     </nuxt-link>
   </nav>
 </template>
