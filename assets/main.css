@@ -90,12 +90,11 @@ ul.side-nav > li {
 }
 
 .navbar-item {
-  background-color: white;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid black;
 }
 .navbar-item.is-hoverable:hover,
 .navbar-item.is-hoverable:focus {
-  background-color: fuchsia;
+  background-color: #d3d3d3;
 }
 
 .page.tags a {

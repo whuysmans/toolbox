@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-fixed-top">
+  <nav class="navbar is-fixed-top" :class="color">
       <div class="container">
         <div class="navbar-brand" :class="{'is-active': isActive}" @click="isActive = !isActive">
           <button class="navbar-burger">
@@ -23,6 +23,7 @@
 </template>
 <script>
   export default {
+    props: ['color'],
     data () {
       return {
         isActive: false

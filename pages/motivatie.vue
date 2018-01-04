@@ -27,14 +27,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: 'pre-teaching',
-      fiche: store.getters.getInfoFiche('pre-teaching')[0]
-    }
-  },
-  filters: {
-    fixPath (str) {
-      const pattern = /([^/]+\.(bmp|jpg|svg))$/
-      return str.match(pattern)[1]
+      title: 'Motivatie',
+      fiche: store.getters.getInfoFiche('motivatie')[0]
     }
   },
   computed: {

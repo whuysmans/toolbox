@@ -4,7 +4,7 @@
       <page-header :fiche="fiche" :color="backgroundColor"></page-header>
       <tags :fiche="fiche"></tags>
       <div class="section">
-        <aside-menu class="sticky-menu"></aside-menu>
+        <aside-menu class="sticky-menu" :fiche="fiche"></aside-menu>
         <page-content :fiche="fiche" :color="textColor"></page-content>
       </div>
     </div>
