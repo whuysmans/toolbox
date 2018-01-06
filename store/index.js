@@ -13,7 +13,9 @@ const createStore = () => {
       activeFilter: '',
       activeNav: '',
       classSlug: {},
-      activeState: ''
+      activeState: '',
+      token: '',
+      isAuthenticated: false
     },
 
     mutations: {
@@ -48,15 +50,18 @@ const createStore = () => {
       },
       SET_ACTIVE_STATE (state, active) {
         state.activeState = active
+      },
+      SET_AUTHENTICATED_STATE (state, auth) {
+        state.isAuthenticated = auth
+      },
+      SET_TOKEN (state, token) {
+        state.token = token
       }
     },
 
     actions: {
-      async nuxtServerInit ({commit}) {
+      async nuxtServerInit ({commit}, state) {
         let results = await Promise.all([
-          // axios.get('https://cockpit.prutstuin.be/api/collections/get/infofiche?token=ea4a4e833ce371de89666bbba2a149'),
-          // axios.get('https://cockpit.prutstuin.be/api/collections/get/kernthemas?token=ea4a4e833ce371de89666bbba2a149'),
-          // axios.get('https://cockpit.prutstuin.be/api/collections/get/homeinfo?token=ea4a4e833ce371de89666bbba2a149')
           axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/infofiches'),
           axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/kernthemas'),
           axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/homeinfo')
@@ -73,10 +78,19 @@ const createStore = () => {
       },
       setActiveState ({commit}, active) {
         commit('SET_ACTIVE_STATE', active)
+      },
+      setAuthenticatedState ({commit}, auth) {
+        commit('SET_AUTHENTICATED_STATE', auth)
+      },
+      setToken ({commit}, token) {
+        commit('SET_TOKEN', token)
       }
     },
 
     getters: {
+      isAuthenticated (state) {
+        return state.isAuthenticated
+      },
       getInfoFiches (state) {
         return state.infofiches
       },

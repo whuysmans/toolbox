@@ -15,6 +15,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  router: {
+    middleware: 'auth'
+  },
   /*
   ** Customize the progress bar color
   */
@@ -41,6 +44,5 @@ module.exports = {
     { src: 'bulma/bulma.sass', lang: 'sass' },
     { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' },
     { src: 'assets/main.css' }
-  ],
-  plugins: ['~/plugins/filters.js']
+  ]
 }
