@@ -61,7 +61,6 @@ export default {
       })
     },
     cancel (event) {
-      console.log(event)
       this.$refs['pw-login'].value = ''
       this.$refs['pw-login'].focus()
     }

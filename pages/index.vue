@@ -30,6 +30,7 @@
 <script>
 import Filter from '../components/Filter'
 import Navbar from '../components/Navbar'
+import { mapGetters } from 'vuex'
 export default {
   components: {
     'toolbox-filter': Filter,
@@ -46,6 +47,11 @@ export default {
       fiches: store.getters.getInfoFiches,
       activeFilter: store.getters.getActiveFilter
     }
+  },
+  methods: {
+    ...mapGetters([
+      'isAuthenticated'
+    ])
   }
 }
 </script>
