@@ -11,7 +11,6 @@
             <h2 class="subtitle">
               {{ homeInfo.Subtitle }}
             </h2>
-            {{ isAuthenticated }}
           </div>
         </div>
       </section>

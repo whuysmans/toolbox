@@ -1,10 +1,16 @@
 <template>
   <div class="page tags">
+    <nuxt-link class="tag is-white is-medium" to="/" @click.native="handleClick">
+      Home
+    </nuxt-link>
     <nuxt-link class="kern-thema tag is-white is-medium" to="/" @click.native="handleClick">
       {{ fiche.Kernthemas.display }}
     </nuxt-link>
     <nuxt-link v-for="cat in fiche.Subcategorie" to="/" :key="cat._id" class="tag is-white is-medium" @click.native="handleClick">
       {{ cat.display }}
+    </nuxt-link>
+    <nuxt-link to="/" class="tag is-white is-medium not-active">
+      {{ fiche.Titel }}
     </nuxt-link>
   </div>
 </template>

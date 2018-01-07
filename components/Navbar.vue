@@ -11,7 +11,7 @@
           <div class="navbar-start"></div>
           <div class="navbar-end" style="margin-right: 2em;">
             <div class="navbar-item is-hoverable">
-              <a  style="color: black;" href="https://cipt.be/toolbox/topic/welkom-op-het-forum">Teacher Zone</a>
+              <a  style="color: black;" href="https://cipt.be/toolbox/topic/welkom-op-het-forum">Ideeënforum</a>
             </div>
             <div class="navbar-item is-hoverable">
               <nuxt-link style="color: black;" to="/">Bibliografie</nuxt-link>

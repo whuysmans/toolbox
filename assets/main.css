@@ -48,7 +48,10 @@
   z-index: 40;
 }*/
 
-
+.not-active {
+  pointer-events: none;
+  cursor: default;
+}
 .sticky-menu {
   margin-left: -.75em;
 }
