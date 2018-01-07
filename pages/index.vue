@@ -1,40 +1,45 @@
 <template>
-  <div class="home">
-    <nav-bar></nav-bar>
-    <section class="hero home-hero">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            {{ homeInfo.Titel }}
-          </h1>
-          <h2 class="subtitle">
-            {{ homeInfo.Subtitle }}
-          </h2>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-three-fifths">
-            <h2 class="subtitle">Werking van de Toolbox</h2>
-            <div v-html="homeInfo.Beschrijving"></div>
+  <div>
+    <div v-if="isAuthenticated" class="home">
+      <nav-bar></nav-bar>
+      <section class="hero home-hero">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              {{ homeInfo.Titel }}
+            </h1>
+            <h2 class="subtitle">
+              {{ homeInfo.Subtitle }}
+            </h2>
+            {{ isAuthenticated }}
           </div>
-          <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
         </div>
-      </div>
-    </section>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-three-fifths">
+              <h2 class="subtitle">Werking van de Toolbox</h2>
+              <div v-html="homeInfo.Beschrijving"></div>
+            </div>
+            <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
+          </div>
+        </div>
+      </section>
+    </div>
+    <login v-else></login>
   </div>
 </template>
 
 <script>
 import Filter from '../components/Filter'
 import Navbar from '../components/Navbar'
-import { mapGetters } from 'vuex'
+import Login from '../components/Login'
 export default {
   components: {
     'toolbox-filter': Filter,
-    'nav-bar': Navbar
+    'nav-bar': Navbar,
+    'login': Login
   },
   data () {
     return {
@@ -48,10 +53,10 @@ export default {
       activeFilter: store.getters.getActiveFilter
     }
   },
-  methods: {
-    ...mapGetters([
-      'isAuthenticated'
-    ])
+  computed: {
+    isAuthenticated () {
+      return this.$store.getters.isAuthenticated
+    }
   }
 }
 </script>
