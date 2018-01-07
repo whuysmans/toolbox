@@ -25,40 +25,16 @@ const createStore = () => {
         })
       },
       LOAD_KERN_THEMAS (state, themas) {
-        if (!Array.prototype.find) {
-          Object.defineProperty(Array.prototype, 'find', {
-            value: function(predicate) {
-              if (this == null) {
-                throw new TypeError('"this" is null or not defined');
-              }
-              var o = Object(this);
-              var len = o.length >>> 0;
-              if (typeof predicate !== 'function') {
-                throw new TypeError('predicate must be a function');
-              }
-              var thisArg = arguments[1];
-              var k = 0;
-              while (k < len) {
-                var kValue = o[k];
-                if (predicate.call(thisArg, kValue, k, o)) {
-                  return kValue;
-                }
-                k++;
-              }
-              return undefined;
-            }
-          });
-        }
         // dirty hack to load them in the right order
-        state.kernthemas.push(themas.find((thema) => {
+        state.kernthemas.push(themas.filter((thema) => {
           return thema._id === 4
-        }))
-        state.kernthemas.push(themas.find((thema) => {
+        })[0])
+        state.kernthemas.push(themas.filter((thema) => {
           return thema._id === 2
-        }))
-        state.kernthemas.push(themas.find((thema) => {
+        })[0])
+        state.kernthemas.push(themas.filter((thema) => {
           return thema._id === 3
-        }))
+        })[0])
         themas.map((thema) => {
           state.classSlug[thema.Titel] = thema.Slug
         })
