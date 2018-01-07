@@ -44,7 +44,7 @@ export default {
     return {
     }
   },
-  asyncData ({store, params}) {
+  asyncData ({store, params, route, userAgent}) {
     return {
       themas: store.getters.getKernThemas,
       homeInfo: store.getters.getHomeInfo[0],

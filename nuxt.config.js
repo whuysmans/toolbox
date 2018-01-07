@@ -38,7 +38,10 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: [
+      'array.prototype.find'
+    ]
   },
   css: [
     { src: 'bulma/bulma.sass', lang: 'sass' },
