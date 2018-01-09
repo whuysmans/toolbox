@@ -15,8 +15,7 @@ const createStore = () => {
       classSlug: {},
       activeState: '',
       token: '',
-      isAuthenticated: typeof window !== 'undefined' && window.localStorage && window.localStorage.getItem('password') !== ''
-        ? true : false
+      isAuthenticated: false
     },
 
     mutations: {
