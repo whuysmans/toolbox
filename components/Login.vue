@@ -56,6 +56,9 @@ export default {
       }).then((resp) => {
         if (resp.data && resp.data !== '') {
           this.success = true
+          if (window && window.localStorage) {
+            window.localStorage.setItem('password', resp.data)
+          }
           this.setAuthenticatedState(true).then(() => this.$router.replace({path: '/'}))
         }
       })
