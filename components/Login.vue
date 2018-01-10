@@ -56,7 +56,7 @@ export default {
       }).then((resp) => {
         if (resp.data && resp.data !== '') {
           this.success = true
-          this.setAuthenticatedState(true).then(() => this.$router.replace({ path: '/', query: { token: resp.data } }))
+          this.setAuthenticatedState(true).then(() => this.$router.replace({ path: '/'}))
         }
       })
     },

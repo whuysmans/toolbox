@@ -53,10 +53,7 @@ export default {
   },
   computed: {
     isAuthenticated () {
-      if (process.isBrowser) {
-        return window.cookie
-      }
-      return this.$store.getters.isAuthenticated
+      return this.$route.query.token ? true : this.$store.getters.isAuthenticated
     }
   }
 }
