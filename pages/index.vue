@@ -33,7 +33,6 @@
 import Filter from '../components/Filter'
 import Navbar from '../components/Navbar'
 import Login from '../components/Login'
-import Cookies from 'js-cookie'
 export default {
   components: {
     'toolbox-filter': Filter,
@@ -54,8 +53,8 @@ export default {
   },
   computed: {
     isAuthenticated () {
-      if (Cookies.get('token') !== '') {
-        return true
+      if (process.isBrowser) {
+        return window.cookie
       }
       return this.$store.getters.isAuthenticated
     }

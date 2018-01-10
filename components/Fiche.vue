@@ -12,10 +12,8 @@
             </span>
           </div>
           <div class="media-content">
-            <p>
-              <h3 class="subtitle">Beschrijving</h3>
-              <div v-html="fiche.Beschrijving"></div>
-            </p>
+            <h3 class="subtitle">Beschrijving</h3>
+            <div v-html="fiche.Beschrijving"></div>
           </div>
         </article>
       </div>
@@ -27,10 +25,8 @@
             </span>
           </div>
           <div class="media-content">
-            <p>
-              <h3 class="subtitle">Werking</h3>
-              <div v-html="fiche.Werking"></div>
-            </p>
+            <h3 class="subtitle">Werking</h3>
+            <div v-html="fiche.Werking"></div>
           </div>
         </article>
       </div>
@@ -42,10 +38,8 @@
             </span>
           </div>
           <div class="media-content">
-            <p>
-              <h3 class="subtitle">Tips</h3>
-              <div v-html="fiche.Tips"></div>
-            </p>
+            <h3 class="subtitle">Tips</h3>
+            <div v-html="fiche.Tips"></div>
           </div>
         </article>
       </div>
@@ -57,10 +51,8 @@
             </span>
           </div>
           <div class="media-content">
-            <p>
-              <h3 class="subtitle">Voorbeelden</h3>
-              <div v-html="fiche.Voorbeelden"></div>
-            </p>
+            <h3 class="subtitle">Voorbeelden</h3>
+            <div v-html="fiche.Voorbeelden"></div>
           </div>
         </article>
       </div>

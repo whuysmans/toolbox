@@ -19,7 +19,7 @@
           <div v-if="thema._id === showCurrent"class="notification">
             <button class="delete" @click.prevent="showCurrent = 0">
             </button>
-            <p v-html="thema.ExtraContent"></p>
+            <div v-html="thema.ExtraContent"></div>
           </div>
           <div class="tags subcat-tags">
             <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-medium" :class="thema.Slug" href="" @click.prevent.stop="handleSubcatClick">
