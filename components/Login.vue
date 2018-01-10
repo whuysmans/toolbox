@@ -39,6 +39,7 @@
 <script>
 import axios from 'axios'
 import { mapActions } from 'vuex'
+import Cookies from 'js-cookie'
 export default {
   data () {
     return {
@@ -56,6 +57,7 @@ export default {
       }).then((resp) => {
         if (resp.data && resp.data !== '') {
           this.success = true
+          Cookies.set('token', resp.data)
           this.setAuthenticatedState(true).then(() => this.$router.replace({path: '/'}))
         }
       })

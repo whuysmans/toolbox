@@ -119,4 +119,10 @@ ul.side-nav > li {
 .page.tags span.current {
   font-weight: bold;
 }
+.subcat-tags {
+  margin-top: 2em;
+}
+.home-info {
+  padding-right: 2em;
+}
 

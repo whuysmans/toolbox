@@ -1,6 +1,6 @@
 <template>
   <div class="column">
-    <h2 class="subtitle">Filter op de fiches</h2>
+    <h2 class="subtitle">Filter op de fiche-categorieën</h2>
     <div class="filter content tile is-ancestor">
       <div class="tile is-vertical is-parent">
         <article v-if="showFilter" class="tile is-child box tags">
@@ -12,10 +12,16 @@
             class="tag is-medium">{{ fiche.Titel }}
           </nuxt-link>
         </article>
-        <article v-for="thema in themas" class="box tile is-child" key="thema._id" @click.prevent="handleKernthemaClick">
+        <article v-for="thema in themas" class="box tile is-child" key="thema._id">
           <h3 class=""><i class="fa" :class="[thema.Icoon, 'tekst-' + thema.Slug]"></i> {{ thema.Titel }}</h3>
-          <div v-html="thema.Info"></div>
-          <div class="tags">
+          <div v-html="thema.Content"></div>
+          <a v-if="thema.ExtraContent" @click.prevent="showThemaNotification(thema._id)">Lees meer...</a>
+          <div v-if="thema._id === showCurrent"class="notification">
+            <button class="delete" @click.prevent="showCurrent = 0">
+            </button>
+            <p v-html="thema.ExtraContent"></p>
+          </div>
+          <div class="tags subcat-tags">
             <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-medium" :class="thema.Slug" href="" @click.prevent.stop="handleSubcatClick">
               {{ subcat.display }}
             </a>
@@ -37,7 +43,8 @@ export default {
   data () {
     return {
       searchText: '',
-      isThemaSearch: false
+      isThemaSearch: false,
+      showCurrent: 0
     }
   },
   methods: {
@@ -59,6 +66,9 @@ export default {
       this.isThemaSearch = true
       this.setActiveFilter(text)
       this.searchText = text
+    },
+    showThemaNotification (id) {
+      this.showCurrent = id
     }
   },
   computed: {

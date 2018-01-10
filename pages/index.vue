@@ -17,8 +17,7 @@
       <section class="section">
         <div class="container">
           <div class="columns">
-            <div class="column is-three-fifths">
-              <h2 class="subtitle">Werking van de Toolbox</h2>
+            <div class="column is-half home-info">
               <div v-html="homeInfo.Beschrijving"></div>
             </div>
             <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
@@ -34,6 +33,7 @@
 import Filter from '../components/Filter'
 import Navbar from '../components/Navbar'
 import Login from '../components/Login'
+import Cookies from 'js-cookie'
 export default {
   components: {
     'toolbox-filter': Filter,
@@ -54,6 +54,9 @@ export default {
   },
   computed: {
     isAuthenticated () {
+      if (Cookies.get('token') !== '') {
+        return true
+      }
       return this.$store.getters.isAuthenticated
     }
   }
