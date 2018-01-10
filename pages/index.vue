@@ -53,7 +53,14 @@ export default {
   },
   computed: {
     isAuthenticated () {
-      return this.$route.query.token ? true : this.$store.getters.isAuthenticated
+      if (this.$route.query.token) {
+        this.$store.dispatch('setAuthenticatedState', {
+          auth: true
+        })
+        return true
+      } else {
+        return this.$store.getters.isAuthenticated
+      }
     }
   }
 }
