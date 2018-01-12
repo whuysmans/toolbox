@@ -25,6 +25,10 @@
       <h3 class="subtitle"><i class="fa" :class="[fiche.VoorbeeldenIcoon, color]"></i> Voorbeelden</h3>
       <div v-html="fiche.Voorbeelden"></div>
     </article>
+    <article v-if="fiche.Reflectie" id="reflectie" class="fiche-item reflectie">
+      <h3 class="subtitle"><i class="fa" :class="[fiche.ReflectieIcoon, color]"></i> Reflectie</h3>
+      <div v-html="fiche.Reflectie"></div>
+    </article>
   </div>
 </template>
 <script>
