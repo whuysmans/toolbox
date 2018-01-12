@@ -14,7 +14,8 @@
                 :class="success ? 'is-success' : 'is-danger'" 
                 v-model="password" 
                 placeholder="wachtwoord"
-                ref="pw-login">
+                ref="pw-login"
+                @keyup.enter="submit">
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
