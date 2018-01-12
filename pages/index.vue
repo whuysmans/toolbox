@@ -18,7 +18,10 @@
         <div class="container">
           <div class="columns">
             <div class="column is-half home-info">
-              <div v-html="homeInfo.Beschrijving"></div>
+              <div class="home-info-body" v-html="homeInfo.Beschrijving"></div>
+              <article class="message is-link">
+                <div class="message-body" v-html="homeInfo.Extra"></div>
+              </article>
             </div>
             <toolbox-filter :themas="themas" :fiches="fiches"></toolbox-filter>
           </div>
