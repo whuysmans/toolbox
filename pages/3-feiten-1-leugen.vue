@@ -27,8 +27,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: '3 minuten pauze',
-      fiche: store.getters.getInfoFiche('3-minuten-pauze')[0]
+      title: 'Drie feiten en één leugen',
+      fiche: store.getters.getInfoFiche('3-feiten-1-leugen')[0]
     }
   },
   computed: {

@@ -27,8 +27,8 @@ export default {
   },
   asyncData ({store, params}) {
     return {
-      title: '3 minuten pauze',
-      fiche: store.getters.getInfoFiche('3-minuten-pauze')[0]
+      title: 'Piramide',
+      fiche: store.getters.getInfoFiche('piramide')[0]
     }
   },
   computed: {
