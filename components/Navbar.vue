@@ -13,8 +13,11 @@
             <div class="navbar-item is-hoverable">
               <a  style="color: black;" href="https://cipt.be/toolbox/topic/welkom-op-het-forum">Ideeënforum</a>
             </div>
-            <div class="navbar-item is-hoverable">
-              <nuxt-link style="color: black;" to="/">Bibliografie</nuxt-link>
+            <div v-if="parent === 'biblio'" class="navbar-item is-hoverable">
+              <nuxt-link style="color: black;" to="/">Home</nuxt-link>
+            </div>
+            <div v-else class="navbar-item is-hoverable">
+              <nuxt-link style="color: black;" to="/bibliografie">Bibliografie</nuxt-link>
             </div>
           </div>
         </div>
@@ -23,7 +26,7 @@
 </template>
 <script>
   export default {
-    props: ['color'],
+    props: ['color', 'parent'],
     data () {
       return {
         isActive: false

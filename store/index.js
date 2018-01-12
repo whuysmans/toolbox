@@ -10,6 +10,7 @@ const createStore = () => {
       infofiches: [],
       kernthemas: [],
       homeInfo: null,
+      biblio: null,
       activeFilter: '',
       activeNav: '',
       classSlug: {},
@@ -42,6 +43,9 @@ const createStore = () => {
       LOAD_HOME_INFO (state, info) {
         state.homeInfo = info
       },
+      LOAD_BIBLIO (state, biblio) {
+        state.biblio = biblio
+      },
       SET_ACTIVE_FILTER (state, filter) {
         state.activeFilter = filter
       },
@@ -64,11 +68,13 @@ const createStore = () => {
         let results = await Promise.all([
           axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/infofiches'),
           axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/kernthemas'),
-          axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/homeinfo')
+          axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/homeinfo'),
+          axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/bibliografie')
         ])
         commit('LOAD_INFO_FICHES', results[0].data.entries)
         commit('LOAD_KERN_THEMAS', results[1].data.entries)
         commit('LOAD_HOME_INFO', results[2].data.entries)
+        commit('LOAD_BIBLIO', results[3].data.entries)
       },
       setActiveFilter ({commit}, filter) {
         commit('SET_ACTIVE_FILTER', filter)
@@ -90,6 +96,9 @@ const createStore = () => {
     getters: {
       isAuthenticated (state) {
         return state.isAuthenticated
+      },
+      getBiblio (state) {
+        return state.biblio
       },
       getInfoFiches (state) {
         return state.infofiches
