@@ -15,6 +15,7 @@
                 v-model="password" 
                 placeholder="wachtwoord"
                 ref="pw-login"
+                autofocus
                 @keyup.enter="submit">
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
