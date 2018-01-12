@@ -1,5 +1,5 @@
 <template>
-  <div class="column">
+  <div class="column" ref="subcatfilter">
     <h2 class="subtitle">Filter op de fiche-categorieën</h2>
     <div class="filter content tile is-ancestor">
       <div class="tile is-vertical is-parent">
@@ -16,7 +16,7 @@
           <h3 class=""><i class="fa" :class="[thema.Icoon, 'tekst-' + thema.Slug]"></i> {{ thema.Titel }}</h3>
           <div v-html="thema.Content"></div>
           <a v-if="thema.ExtraContent" @click.prevent="showThemaNotification(thema._id)">Lees meer...</a>
-          <div v-if="thema._id === showCurrent"class="notification">
+          <div v-if="thema._id === showCurrent" class="notification">
             <button class="delete" @click.prevent="showCurrent = 0">
             </button>
             <div v-html="thema.ExtraContent"></div>
@@ -33,6 +33,7 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import Vue from 'vue'
 export default {
   props: ['themas', 'fiches'],
   filters: {
@@ -60,6 +61,9 @@ export default {
       this.isThemaSearch = false
       this.setActiveFilter(text)
       this.searchText = text
+      Vue.nextTick(() => {
+        this.$refs.subcatfilter.scrollIntoView(true)
+      })
     },
     handleKernthemaClick (event) {
       let text = event.target.outerText
