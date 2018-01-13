@@ -5,12 +5,18 @@
       <div class="tile is-vertical is-parent">
         <article v-show="showFilter" class="tile is-child box tags">
           <h5>Fiches voor <em class="tag is-white is-medium">{{ searchText }}</em></h5>
-          <nuxt-link v-for="(fiche, index) in filteredFiches" 
+          <router-link v-for="(fiche, index) in filteredFiches" 
             :to="fiche.Slug" 
             :key="index"
             :class="backgroundColor(fiche.Kernthemas.display)" 
             class="tag is-medium">{{ fiche.Titel }}
-          </nuxt-link>
+          </router-link>
+          <!-- <a v-for="(fiche, index) in filteredFiches"
+            :href="fiche.Slug" 
+            :key="index"
+            :class="backgroundColor(fiche.Kernthemas.display)" 
+            class="tag is-medium">{{ fiche.Titel }}
+          </a> -->
         </article>
         <article v-for="thema in themas" class="box tile is-child" key="thema._id">
           <h3 class=""><i class="fa" :class="[thema.Icoon, 'tekst-' + thema.Slug]"></i> {{ thema.Titel }}</h3>
