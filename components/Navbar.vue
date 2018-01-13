@@ -19,6 +19,11 @@
             <div class="navbar-item is-hoverable">
               <a  style="color: black;" href="https://cipt.be/toolbox/topic/welkom-op-het-forum">Ideeënforum</a>
             </div>
+            <div class="navbar-item is-hoverable">
+              <a href="https://kdg.be" style="color: black;" class="logo-link">
+                <img src="https://cipt.be/toolbox/wp-content/uploads/2018/01/KdG_H_Closed-e1515855778724.png" alt="KdG Hogeschool" width="112" height="28">
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -100,6 +100,9 @@ ul.side-nav > li {
 .navbar-item.is-hoverable:focus {
   background-color: #d3d3d3;
 }
+.logo-link {
+  line-height: 0;
+}
 
 .page.tags a {
   position: relative;
