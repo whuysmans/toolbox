@@ -82,9 +82,9 @@ export default {
         this.searchText = this.getActiveFilter()
       }
       return ficheArray.filter((fiche) => {
-        return !this.isThemaSearch ? fiche.Subcategorie.filter((cat) => {
-          return cat.display === this.searchText
-        })[0] : (fiche.Kernthemas.display === this.searchText)
+        return !this.isThemaSearch ? fiche.Subcategorie.find((cat) => {
+          return cat.display.trim() === this.searchText.trim()
+        }) : (fiche.Kernthemas.display === this.searchText)
       })
     },
     showFilter () {
