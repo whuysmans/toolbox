@@ -1,3 +1,4 @@
+
 .page-enter-active, .page-leave-active {
   transition: opacity .2s;
 }
@@ -129,3 +130,9 @@ ul.side-nav > li {
   margin-bottom: 2em;
 }
 
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { 
+  /* IE10+ CSS styles go here */
+  :not(.is-child).tile.ie-no-flex {
+    display: block !important;
+  }
+}

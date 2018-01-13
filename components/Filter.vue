@@ -1,8 +1,8 @@
 <template>
   <div class="column" ref="subcatfilter">
     <h2 class="subtitle">Filter op de fiche-categorieën</h2>
-    <div class="filter content tile is-ancestor">
-      <div class="tile is-vertical is-parent">
+    <div class="filter content tile is-ancestor ie-no-flex">
+      <div class="tile is-vertical is-parent ie-no-flex">
         <article v-show="showFilter" class="tile is-child box tags">
           <h5>Fiches voor <em class="tag is-white is-medium">{{ searchText }}</em></h5>
           <nuxt-link v-for="(fiche, index) in filteredFiches" 
@@ -82,9 +82,9 @@ export default {
         this.searchText = this.getActiveFilter()
       }
       return ficheArray.filter((fiche) => {
-        return !this.isThemaSearch ? fiche.Subcategorie.find((cat) => {
+        return !this.isThemaSearch ? fiche.Subcategorie.filter((cat) => {
           return cat.display.trim() === this.searchText.trim()
-        }) : (fiche.Kernthemas.display === this.searchText)
+        })[0] : (fiche.Kernthemas.display === this.searchText)
       })
     },
     showFilter () {
