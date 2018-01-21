@@ -41,7 +41,8 @@ export default {
   props: ['fiche', 'color'],
   data () {
     return {
-      showNotification: false
+      showNotification: false,
+      html: null
     }
   },
   computed: {
