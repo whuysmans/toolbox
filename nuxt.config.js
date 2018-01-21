@@ -6,7 +6,7 @@ module.exports = {
     routes: function () {
       return axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/infofiches')
       .then((res) => {
-        return res.data.map((fiche) => {
+        return res.data.entries.map((fiche) => {
           return '/' + fiche.slug
         })
       })
