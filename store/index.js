@@ -123,9 +123,9 @@ const createStore = () => {
       },
       getInfoFicheIndex (state) {
         return (name) => {
-          return state.infofiches.findIndex((fiche) => {
+          return state.infofiches.indexOf(state.infofiches.filter((fiche) => {
             return fiche.Slug.toLowerCase() === name
-          })
+          })[0])
         }
       },
       getSlugByNumber (state) {
